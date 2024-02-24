@@ -1,2 +1,2 @@
 # patterns-in-golang
- Programming Patterns in Golang
+Programming Patterns in Golang

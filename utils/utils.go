@@ -1,6 +1,9 @@
 package utils
 
-import "math/rand"
+import (
+	"math/rand"
+	"strconv"
+)
 
 func GenerateIntArray(len, maxn int, ran bool) []int {
 	arr := []int{}
@@ -16,4 +19,20 @@ func GenerateIntArray(len, maxn int, ran bool) []int {
 	}
 
 	return arr
+}
+
+func PrintIntArray(arr []int) {
+	if len(arr) == 0 {
+		println("[]")
+	} else {
+		str := "[" + strconv.Itoa(arr[0])
+
+		for i := 1; i < len(arr); i++ {
+			str += ", " + strconv.Itoa(arr[i])
+		}
+
+		str += "]"
+
+		println(str)
+	}
 }
