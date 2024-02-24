@@ -1,6 +1,11 @@
 package patterns
 
-func TwoPointers(arr []int, sum int) []int {
+// in this two pointers example, we are
+// taking an input array and finding the
+// given sum of the input array, and
+// return an array of the two values who
+// add up to the target sum
+func TwoPointers(arr []int, target int) []int {
 	ret := []int{}
 
 	if len(arr) < 2 {
@@ -8,36 +13,40 @@ func TwoPointers(arr []int, sum int) []int {
 	}
 
 	// set a counter so we don't exceed arr len
-	c := 0
+	counter := 0
 
-	// set a sum value here
-	x := 0
-
+	// pointerA points to the beginning
+	// and is incremented when a sum is less
+	// than the target
 	pointerA := 0
+
+	// pointerB points to the end of the list
+	// and is decremented when the sum is
+	// greater than the target
 	pointerB := len(arr) - 1
 
 	// while loop
-	for x != sum {
-		x := arr[pointerA] + arr[pointerB]
+	for counter < len(arr) {
+		sum := arr[pointerA] + arr[pointerB]
 
-		if x == sum {
+		if sum == target {
 			ret = []int{arr[pointerA], arr[pointerB]}
 			break
 		}
 
-		if x < sum {
+		// we need to move pointerA right
+		// when the sum is less than target
+		if sum < target {
 			pointerA++
 		}
 
-		if x > sum {
+		// we need to move pointerB left
+		// when the sum is greater than target
+		if sum > target {
 			pointerB--
 		}
 
-		c += 1
-
-		if c > len(arr) {
-			break
-		}
+		counter++
 	}
 
 	return ret
