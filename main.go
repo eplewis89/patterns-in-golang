@@ -1,27 +1,33 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/eplewis89/patterns-in-golang/patterns"
 	"github.com/eplewis89/patterns-in-golang/utils"
 )
 
 func main() {
 	SlidingWindows()
-	TwoPointers()
+	//TwoPointers()
 }
 
 func SlidingWindows() {
 	// should error out
-	patterns.SlidingWindow(1, -1, 2)
+	vals := patterns.SlidingWindow2(100, 50, 3)
+
+	for _, val := range vals {
+		fmt.Println(val)
+	}
 
 	// should error out
-	patterns.SlidingWindow(1, 1, 2)
+	//patterns.SlidingWindow(1, 1, 2)
 
 	// should print the whole array
-	patterns.SlidingWindow(10, 50, 10)
+	//patterns.SlidingWindow(10, 50, 10)
 
 	// should print subsections
-	patterns.SlidingWindow(100, 50, 3)
+	//patterns.SlidingWindow(100, 50, 3)
 }
 
 func TwoPointers() {
