@@ -9,28 +9,61 @@ import (
 
 func main() {
 	SlidingWindows()
-	//TwoPointers()
+	SlidingWindowsTest()
+	TwoPointers()
 }
 
 func SlidingWindows() {
+	fmt.Println("============= Sliding Windows ==================")
+
 	// should error out
-	vals := patterns.SlidingWindow2(100, 50, 3)
+	vals := patterns.SlidingWindow(-1, -1, 2)
 
 	for _, val := range vals {
 		fmt.Println(val)
 	}
 
 	// should error out
-	//patterns.SlidingWindow(1, 1, 2)
+	vals = patterns.SlidingWindow(1, 1, 2)
+
+	for _, val := range vals {
+		fmt.Println(val)
+	}
 
 	// should print the whole array
-	//patterns.SlidingWindow(10, 50, 10)
+	vals = patterns.SlidingWindow(10, 50, 10)
+
+	for _, val := range vals {
+		fmt.Println(val)
+	}
 
 	// should print subsections
-	//patterns.SlidingWindow(100, 50, 3)
+	vals = patterns.SlidingWindow(10, 5, 3)
+
+	for _, val := range vals {
+		fmt.Println(val)
+	}
+
+	fmt.Println("================================================")
+}
+
+func SlidingWindowsTest() {
+	fmt.Println("============= Sliding Windows Test =============")
+
+	// test the sliding windows algorithms
+	arr := utils.GenerateIntArray(500, 20, true)
+	vals := patterns.FindSubarraysForSum(arr, 15, 3)
+
+	for _, val := range vals {
+		fmt.Println(val)
+	}
+
+	fmt.Println("================================================")
 }
 
 func TwoPointers() {
+	fmt.Println("============= Two Pointers =====================")
+
 	arr := []int{0, 1, 15, 16, 25, 30, 37}
 
 	// this should work and print "[0, 30]"
@@ -47,4 +80,6 @@ func TwoPointers() {
 
 	// this should not work and print "[]"
 	utils.PrintIntArray(patterns.TwoPointers([]int{}, 12))
+
+	fmt.Println("================================================")
 }

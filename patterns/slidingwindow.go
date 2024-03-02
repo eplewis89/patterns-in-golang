@@ -12,11 +12,13 @@ func SlidingWindow(len, max, window int) [][]int {
 
 	// we can't do a sliding window with zero values
 	if len < 1 || max < 1 || window < 1 {
+		println("cannot use window or sum less than 1")
 		return ret
 	}
 
 	// window can be equal but not greater than length of array
 	if window > len {
+		println("window cannot be greater than length of array")
 		return ret
 	}
 
