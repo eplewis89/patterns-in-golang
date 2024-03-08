@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	SlidingWindows()
+	//SlidingWindows()
 	SlidingWindowsTest()
-	TwoPointers()
+	//TwoPointers()
 }
 
 func SlidingWindows() {
@@ -53,6 +53,12 @@ func SlidingWindowsTest() {
 	// test the sliding windows algorithms
 	arr := utils.GenerateIntArray(500, 20, true)
 	vals := patterns.FindSubarraysForSum(arr, 15, 3)
+
+	for _, val := range vals {
+		fmt.Println(val)
+	}
+
+	vals = patterns.FindSubarraysForSumSlidingWindow(arr, 15, 3)
 
 	for _, val := range vals {
 		fmt.Println(val)

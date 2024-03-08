@@ -87,3 +87,62 @@ func FindSubarraysForSum(arr []int, sum, window int) [][]int {
 
 	return ret
 }
+
+// this algorithm matches a subarray of length window
+// to the declared value sum and adds it to an array
+// if the sum matches the values of the subarray
+func FindSubarraysForSumSlidingWindow(arr []int, sum, window int) [][]int {
+	// hold the return values here
+	ret := [][]int{}
+
+	// we can't do a sliding window with zero values
+	if sum < 1 || window < 1 {
+		println("cannot use window or sum less than 1")
+		return ret
+	}
+
+	// window can be equal but not greater than length of array
+	if window > len(arr) {
+		println("window cannot be greater than length of array")
+		return ret
+	}
+
+	// hold the sum of the window
+	window_sum := 0
+
+	// hold current int array
+	cur := []int{}
+
+	// first, check the sum of the first {window size}
+	// elements
+	for i := 0; i < window; i++ {
+		window_sum += arr[i]
+		cur = append(cur, arr[i])
+	}
+
+	// if our sum matches append the current arr
+	if window_sum == sum {
+		ret = append(ret, cur)
+	}
+
+	// starting at window index, go to end of list
+	// here we'll remove the zero-th element and append
+	// the new element to the sum and array
+	for i := window; i < len(arr); i++ {
+		// add the current index value and subtract
+		// the previous zero-th element from the sum
+		window_sum += arr[i] - arr[i-window]
+
+		// remove the zero-th element from the previous
+		// window array and append new value to end
+		cur = cur[1:]
+		cur = append(cur, arr[i])
+
+		// if our sum matches append the current arr
+		if window_sum == sum {
+			ret = append(ret, cur)
+		}
+	}
+
+	return ret
+}
